@@ -63,3 +63,83 @@ cd "Django Project directory"
 python -m venv venv
 venv\Scripts\activate  # On Windows
 pip install -r requirements.txt
+
+
+
+**## Run Migrations**
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+### Create Superuser
+python manage.py createsuperuser
+
+
+## Run the Server
+python manage.py runserver
+
+
+## Run Celery Worker to ensure redis is running
+celery -A django_celery_budget worker -l info
+
+## Run Celery Beat to run periodic tasks
+celery -A django_celery_budget beat -l info
+
+
+
+
+ System Workflow
+check_and_pause_campaigns: Periodic Celery task.
+
+Pauses campaigns exceeding budgets or outside allowed hours.
+
+reset_daily_monthly_spend (to be added):
+
+Resets daily/monthly spend.
+
+Reactivates eligible campaigns.
+
+Views:
+
+/ = Dashboard
+
+/health/ = Health check page
+
+🧪 Type Checking
+This project includes static type hints and can be checked using mypy:
+
+
+mypy .
+Zero type errors expected. See mypy.ini for config.
+
+ Related Files
+pseudocode.md: High-level system design.
+
+mypy.ini: Static typing configuration.
+
+README.md: This file.
+
+📝 Assumptions
+Campaigns are logged and updated externally.
+
+Timezone is UTC by default.
+
+Budgets are inclusive of the threshold.
+
+🛠️ Tech Stack
+Django 5.2.4
+
+Celery
+
+Redis
+
+SQLite (default, can swap with PostgreSQL)
+
+Python 3.10+
+
+ Author
+Abdul Imran Ajikanle
+
+
+
