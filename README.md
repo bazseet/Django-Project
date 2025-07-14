@@ -106,7 +106,7 @@ Views:
 
 /health/ = Health check page
 
-🧪 Type Checking
+ Type Checking
 This project includes static type hints and can be checked using mypy:
 
 
@@ -118,7 +118,7 @@ pseudocode.md: High-level system design.
 
 mypy.ini: Static typing configuration.
 
-README.md: This file.
+
 
 📝 Assumptions
 Campaigns are logged and updated externally.
